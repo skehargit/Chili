@@ -48,8 +48,8 @@ function Hero() {
         <div className=" bg-zinc-950 h-[32%] relative"></div>
       </div>
       <div className="pt-28 flex flex-col gap-5 w-full items-center justify-center ">
-        <h2 className="satisfy-regular text-2xl">what would you like to prefer ?</h2>
-        <div className="flex max-[700px]:flex-col gap-5">
+        <h2 className="satisfy-regular text-2xl ">what would you like to prefer ?</h2>
+        <div className="py-10 flex max-[700px]:flex-col gap-5">
           <div className="vegmenu h-[200px] w-[300px]  overflow-hidden relative flex items-center justify-center">
             <img
               className="h-full w-full absolute hover:scale-[1.5] duration-300 z-[1]"

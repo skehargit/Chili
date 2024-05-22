@@ -1,30 +1,31 @@
 import React, { useContext, useState } from 'react'
 import { StoreContext } from '../context/StoreContext';
-
-function FoodItem({id,name,description,category,price}) {
+import { FiPlus } from "react-icons/fi";
+import { FiMinus } from "react-icons/fi";
+function FoodItem({id,name,description,category,price,image}) {
     // const [itmeCount, setItemCount] = useState(0);
     const {cartItem,addToCart,removeFromCart}=useContext(StoreContext);
     // console.log(cartItem)
   return (
-    <div className="border">
+    <div className="w-[150px] m-2">
               <div className="img-container">
-                <img src="" alt="" />
+                <img className='h-[200px] w-full' src={image} alt="" />
               </div>
-              <div className="food-info">
-                <p>{name}</p>
-                <p>{description}</p>
-                <p>{price}</p>
-                <div>
+              <div className="food-info flex flex-col justify-between">
+                <p className='font-semibold text-sm'>{name}</p>
+                {/* <p className='text-zinc-500 text-sm'>{description}</p> */}
+                <div className='flex'><p className='text-red-300 line-through '>{price-5}</p><p className='text-red-500'>{price}</p></div>
+                <div className='bg-red-500'>
                   {!cartItem[id] ? (
-                    <img
-                      className="border h-[10px] w-[10px]"
+                    <div
+                      className="flex items-center justify-center"
                       onClick={() => addToCart(id)}
-                    ></img>
+                    ><FiPlus />Add to cart</div>
                   ) : (
-                    <div>
-                      <img onClick={() => removeFromCart(id)} className="border border-red-500 h-[10px] w-[10px]"></img>
-                      <p>{cartItem[id]}</p>
-                      <img onClick={() => addToCart(id)} className="border border-green-500 h-[10px] w-[10px]"></img>
+                    <div className='flex '>
+                      <div onClick={() => removeFromCart(id)} className="bg-red-500 w-full flex items-center justify-center"><FiMinus /></div>
+                      <p className='px-2 bg-black'>{cartItem[id]}</p>
+                      <div onClick={() => addToCart(id)} className="w-full bg-green-500 flex items-center justify-center"><FiPlus /></div>
                     </div>
                   )}
                 </div>
