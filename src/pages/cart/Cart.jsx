@@ -29,7 +29,7 @@ function Cart() {
                     <span>
                       <PiCurrencyInr />
                     </span>
-                    {(item.price + 5) * cartItem[item.id]}
+                    {(item.price *2) * cartItem[item.id]}
                   </p>
                   <p className="text-green-500 flex items-center font-semibold">
                     <span>
