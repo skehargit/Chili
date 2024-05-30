@@ -2,7 +2,7 @@ import React from "react";
 
 function PlaceOrder() {
   return (
-    <div>
+    <div className="pt-10">
       <form action="">
        <div> <div>
           <p>title deleinfo</p>
