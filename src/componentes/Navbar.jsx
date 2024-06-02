@@ -1,12 +1,18 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import { StoreContext } from "../context/StoreContext";
 function Navbar({ setShowUser }) {
   const [menu, setMenu] = useState("home");
   // const {cartItem}=useContext(StoreContext);
-  const { cartItem } = useContext(StoreContext);
+  const { cartItem,token,setToken } = useContext(StoreContext);
+  const navigate=useNavigate();
+  const logout=()=>{
+    localStorage.removeItem("token");
+    setToken("");
+    navigate("/");
+  }
   return (
     <div className="w-full h-fit  fixed top-0 z-[100]">
       {/* <div>location</div> */}
@@ -63,9 +69,18 @@ function Navbar({ setShowUser }) {
               )}
             </button>
           </Link>
-          <button className="p-2" onClick={() => setShowUser(true)}>
+          {!token?<button className="p-2" onClick={() => setShowUser(true)}>
+            sign in
+          </button>:<button className="p-2">
             <FaCircleUser className="text-xl" />
-          </button>
+            <div className="">
+              <ul>
+                <li className="p-2 border border-red-500"><p>orders</p></li>
+                <li onClick={logout} className="p-2 border border-red-500"><p>logout</p></li>
+              </ul>
+            </div>
+          </button>}
+          
         </div>
       </div>
     </div>

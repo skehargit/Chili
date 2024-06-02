@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { StoreContext } from "../../../context/StoreContext";
-import { foodList } from "../../../assets/data";
+// import { foodList } from "../../../assets/data";
 import FoodItem from "../../../componentes/FoodItem";
 
 function Foodlist() {
-  const { Foodlist } = useContext(StoreContext);
+  const { foodList } = useContext(StoreContext);
 
 
   return (
@@ -13,7 +13,7 @@ function Foodlist() {
       <div className="grid grid-cols-6 items-center justify-center max-[1024px]:grid-cols-3 py-10">
         {foodList.map((item, index) => {
           return (
-            <FoodItem  key={index} id={item.id} name={item.name } description={item.description} category={item.category} price={item.price} image={item.image}/>
+            <FoodItem  key={index} id={item._id} name={item.name } description={item.description} category={item.category} price={item.price} image={item.image}/>
             
           );
         })}

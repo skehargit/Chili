@@ -10,10 +10,12 @@ function Cart() {
   const { foodList, cartItem, removeFromCart, getTotalCartAmount,addToCart } =
     useContext(StoreContext);
   const navigate = useNavigate();
+  // console.log(cartItem,foodList)
   return (
     <div className="py-14">
       {foodList.map((item, index) => {
-        if (cartItem[item.id] > 0) {
+        // console.log(item)
+        if (cartItem[item._id] > 0) {
           return (
             <div
               key={index}
@@ -29,28 +31,28 @@ function Cart() {
                     <span>
                       <PiCurrencyInr />
                     </span>
-                    {(item.price *2) * cartItem[item.id]}
+                    {(item.price *2) * cartItem[item._id]}
                   </p>
                   <p className="text-green-500 flex items-center font-semibold">
                     <span>
                       <PiCurrencyInr />
                     </span>
-                    {item.price * cartItem[item.id]}
+                    {item.price * cartItem[item._id]}
                   </p>
                 </div>
                 <div className="flex justify-between items-center ">
                   <p className="text-sm">
                     <span>Qty.</span>
-                    {cartItem[item.id]}
+                    {cartItem[item._id]}
                   </p>
-                  <span onClick={()=>addToCart(item.id)} className="bg-green-900 px-2 flex items-center justify-center ">
+                  <span onClick={()=>addToCart(item._id)} className="bg-green-900 px-2 flex items-center justify-center ">
                     +
                   </span>
                 </div>
                 {/* <p className='text-red-500'>{}</p> */}
                 <p
                   className="flex items-center gap-1 border border-zinc-600 p-1"
-                  onClick={() => removeFromCart(item.id)}
+                  onClick={() => removeFromCart(item._id)}
                 >
                   <span>
                     <RiDeleteBinLine />
