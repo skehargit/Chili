@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Navbar from './componentes/Navbar'
 import { Outlet } from 'react-router-dom'
 import User from './componentes/User';
+import Footer from './componentes/Footer';
 
 function App() {
   const [showUser,setShowUser]=useState(false);
@@ -10,6 +11,7 @@ function App() {
       {showUser?<User setShowUser={setShowUser}/>:<></>}
       <Navbar setShowUser={setShowUser}/>
       <Outlet/>
+      <Footer/>
     </div>
   )
 }

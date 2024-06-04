@@ -33,6 +33,8 @@ function User({setShowUser}) {
         if(response.data.success){
             setToken(response.data.token);
             localStorage.setItem("token",response.data.token);
+            localStorage.setItem("name",response.data.data["name"])
+            localStorage.setItem("email",response.data.data["email"])
             setShowUser(false);
         }else{
             alert(response.data.message);

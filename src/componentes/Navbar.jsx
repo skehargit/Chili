@@ -3,19 +3,28 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import { StoreContext } from "../context/StoreContext";
+import { useEffect } from "react";
 function Navbar({ setShowUser }) {
   const [menu, setMenu] = useState("home");
-  // const {cartItem}=useContext(StoreContext);
-  const { cartItem,token,setToken } = useContext(StoreContext);
+  const [cnt,setCnt]=useState(0)
+  const { cartItem,token,setToken} = useContext(StoreContext);
+  
   const navigate=useNavigate();
   const logout=()=>{
     localStorage.removeItem("token");
     setToken("");
     navigate("/");
+    
   }
+  useEffect(()=>{
+    let cntItem =0;
+    for(let item in cartItem){
+      if(cartItem[item]>0)cntItem++
+    }
+    setCnt(cntItem)
+  })
   return (
     <div className="w-full h-fit  fixed top-0 z-[100]">
-      {/* <div>location</div> */}
       <div className="w-full h-full py-3 flex items-center justify-between px-[10vw]">
         <div>
           <h1 className="text-2xl font-semibold capitalize">chili.</h1>
@@ -60,9 +69,9 @@ function Navbar({ setShowUser }) {
           <Link to="/cart">
             <button className=" p-2  relative">
               <FaCartShopping className="text-xl" />
-              {Object.keys(cartItem).length > 0 ? (
+              {cnt > 0 ? (
                 <div className="bg-red-500 h-[15px] w-[15px] absolute top-0 right-0 rounded-full flex items-center justify-center">
-                  {Object.keys(cartItem).length}
+                  {cnt}
                 </div>
               ) : (
                 <></>
@@ -71,15 +80,16 @@ function Navbar({ setShowUser }) {
           </Link>
           {!token?<button className="p-2" onClick={() => setShowUser(true)}>
             sign in
-          </button>:<button className="p-2">
+          </button>:<Link to={"/profile"}>
+          <button className="p-2">
             <FaCircleUser className="text-xl" />
-            <div className="">
+            {/* <div className="">
               <ul>
                 <li className="p-2 border border-red-500"><p>orders</p></li>
                 <li onClick={logout} className="p-2 border border-red-500"><p>logout</p></li>
               </ul>
-            </div>
-          </button>}
+            </div> */}
+          </button></Link>}
           
         </div>
       </div>

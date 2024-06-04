@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { StoreContext } from '../context/StoreContext';
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";

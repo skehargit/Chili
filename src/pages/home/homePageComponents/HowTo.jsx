@@ -5,7 +5,7 @@ import { GiNothingToSay } from "react-icons/gi";
 import { IoExtensionPuzzle } from "react-icons/io5";
 function HowTo() {
   return (
-    <div className='h-screen relative w-full overflow-hidden'>
+    <div className='h-fit relative w-full overflow-hidden'>
         <div className='relative z-[2] bg-zinc-900 w-full h-fit py-10 flex flex-col items-center justify-center'>
             <h3 className='text-4xl font-semibold'>HOW TO</h3>
             <div className='flex grid grid-cols-4 max-[500px]:grid-cols-2'>

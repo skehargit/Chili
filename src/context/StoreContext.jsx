@@ -3,8 +3,9 @@ import { createContext, useEffect, useState } from "react";
 import axios from 'axios'
 export const StoreContext=createContext(null);
 const StoreContextProvider=(props)=>{
-    const url="http://localhost:4000";
-    const [token,setToken]=useState("")
+    const url="https://chilibackend.onrender.com";
+    const [token,setToken]=useState("");
+    const [cntUndefined,setCntUndefined]=useState(0);
     const [cartItem,setCartItem]=useState({});
     const [foodList,setFoodList]=useState([]);
 
@@ -35,19 +36,23 @@ const StoreContextProvider=(props)=>{
         const response=await axios.post(url+"/api/cart/get",{},{headers:{token}});
         setCartItem(response.data.cartData)
     }
-    
     const getTotalCartAmount=()=>{
         let totalAmount=0;
         for(const item in cartItem){
             if(cartItem[item]>0){
+                // console.log("item info",item,cartItem[item],'-')
+                
                 let itemInfo=foodList.find((product)=>product._id===item);
-                totalAmount+=(itemInfo.price * cartItem[item]);
-                // console.log(itemInfo,item)
+                // console.log(itemInfo,"inf-o")
+                if(!itemInfo==undefined){
+                    totalAmount+=(itemInfo.price * cartItem[item]);
+                }
             }
             
         }
         return totalAmount;
     }
+    
 
     useEffect(()=>{
         
@@ -70,7 +75,7 @@ const StoreContextProvider=(props)=>{
         getTotalCartAmount,
         url,
         token,
-        setToken
+        setToken,
     }
     return (
         <StoreContext.Provider value={contextValue}>
