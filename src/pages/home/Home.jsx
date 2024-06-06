@@ -5,7 +5,7 @@ import HowTo from './homePageComponents/HowTo'
 
 function Home() {
   return (
-    <div>
+    <div className='overflow-x-hidden'>
         <Hero/>
         <Foodlist/>
         <HowTo/>
