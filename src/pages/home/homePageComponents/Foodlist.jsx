@@ -12,7 +12,7 @@ function Foodlist() {
       <h2 className="satisfy-regular text-2xl text-zinc-700"><p className="border-b border-zinc-700 p-2 ">Top Dishes near you</p></h2>
       <div className="">
         <h2 className="satisfy-regular text-2xl text-zinc-700 text-center p-2"><FaClover /> Veg</h2>
-        <div className="grid grid-cols-6 items-center justify-center max-[1024px]:grid-cols-3 py-10">
+        <div className="grid grid-cols-6 items-center justify-center max-[1024px]:grid-cols-3 max-[500px]:grid-cols-2 max-[250px]:grid-cols-1 py-10">
           {foodList
             .filter((el) => el.category == "veg")
             .map((item, index) => {
@@ -34,7 +34,7 @@ function Foodlist() {
       </div>
       <div className="">
         <h2 className="satisfy-regular text-2xl text-zinc-700 text-center p-2"><LuClover />NonVeg</h2>
-        <div className="grid grid-cols-6 items-center justify-center max-[1024px]:grid-cols-3 py-10">
+        <div className="grid grid-cols-6 items-center justify-center max-[1024px]:grid-cols-3 max-[500px]:grid-cols-2 max-[250px]:grid-cols-1 py-10">
           {foodList
             .filter((el) => el.category == "nonveg")
             .map((item, index) => {

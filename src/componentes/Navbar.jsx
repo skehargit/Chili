@@ -26,7 +26,7 @@ function Navbar({ setShowUser }) {
   });
   return (
     <div className="w-full h-fit  fixed top-0 z-[100]">
-      <div className="w-full h-full py-3 flex items-center justify-between px-[10vw]">
+      <div className="w-full h-full py-3 flex items-center justify-between px-[10vw] max-[400px]:px-0">
         <div>
           <Link to={"/"}>
             <h1 className="text-2xl font-semibold capitalize">chili.</h1>
@@ -65,19 +65,11 @@ function Navbar({ setShowUser }) {
               about
             </li>
             </Link>
-            <li
-              onClick={() => setMenu("contact")}
-              className={`${
-                menu === "contact" ? "border-b-2 border-zinc-950 " : ""
-              } cursor-pointer`}
-            >
-              contact
-            </li>
           </ul>
         </div>
         <div className="flex gap-3 capitalize">
           <Link to="/cart">
-            <button className=" p-2  relative">
+            <button className=" p-2  relative max-[400px]:hidden">
               <FaCartShopping className="text-xl" />
               {cnt > 0 ? (
                 <div className="bg-red-500 h-[15px] w-[15px] absolute top-0 right-0 rounded-full flex items-center justify-center">
