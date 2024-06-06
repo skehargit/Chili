@@ -2,22 +2,22 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
 const Profile = () => {
   const [name,setName]=useState('');
   const [email,setEmail]=useState('');
-  const [imgurl,setImgurl]=useState('');
+  const logout=()=>{
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email")
+    setToken("");
+      
+  }
   
-  // const navigate=useNavigate();
-  // const logout=()=>{
-  //   localStorage.removeItem("token");
-  //   setToken("");
-  //   navigate("/");
-    
-  // }
   useEffect(()=>{
-    // if(!localStorage.getItem("tudu"))console.log("nothing")
     setName(localStorage.getItem("name"));
     setEmail(localStorage.getItem("email"));
+    
   });
   return (
     <div className='pt-10 min-h-screen'>
@@ -27,11 +27,11 @@ const Profile = () => {
             <div className='flex flex-col font-semibold text-xl justify-between'><h3>{name}</h3><h3>{email}</h3></div>
         </div>
         <div>
-            <div  className='text-lg font-semibold capitalize border-b border-zinc-700 p-3'>Logout</div>
-            <div className='text-lg font-semibold capitalize border-b border-zinc-700 p-3'>my cart</div>
-            <div className='text-lg font-semibold capitalize border-b border-zinc-700 p-3'>my orders</div>
-            <div className='text-lg font-semibold capitalize border-b border-zinc-700 p-3'>Shipping Address</div>
-            <div className='text-lg font-semibold capitalize border-b border-zinc-700 p-3'>Settings</div>
+            <Link to={'/'} onClick={logout}  className='text-lg block font-semibold capitalize border-b border-zinc-700 p-3 '>Logout</Link>
+            <Link to={'/cart'} className='text-lg block font-semibold capitalize border-b border-zinc-700 p-3'>my cart</Link>
+            <Link className='text-lg block font-semibold capitalize border-b border-zinc-700 p-3'>my orders</Link>
+            <Link className='text-lg block font-semibold capitalize border-b border-zinc-700 p-3'>Shipping Address</Link>
+            <Link className='text-lg block font-semibold capitalize border-b border-zinc-700 p-3'>Settings</Link>
             
         </div>
     </div>

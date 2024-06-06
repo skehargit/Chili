@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { StoreContext } from '../context/StoreContext';
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
+import { PiCurrencyInr } from "react-icons/pi";
 function FoodItem({id,name,description,category,price,image}) {
     // const [itmeCount, setItemCount] = useState(0);
     const {cartItem,addToCart,removeFromCart}=useContext(StoreContext);
@@ -14,7 +15,7 @@ function FoodItem({id,name,description,category,price,image}) {
               <div className="food-info flex flex-col justify-between">
                 <p className='font-semibold text-sm'>{name}</p>
                 {/* <p className='text-zinc-500 text-sm'>{description}</p> */}
-                <div className='flex'><p className='text-red-300 line-through '>{price-5}</p><p className='text-red-500'>{price}</p></div>
+                <div className='flex'><span className='text-red-300 line-through flex items-center '><PiCurrencyInr />{price-5}</span><span className='text-red-500 flex items-center'><span><PiCurrencyInr /></span>{price}</span></div>
                 <div className='bg-red-500'>
                   {!cartItem[id] ? (
                     <div
