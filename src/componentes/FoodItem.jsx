@@ -15,7 +15,7 @@ function FoodItem({id,name,description,category,price,image}) {
               <div className="food-info flex flex-col justify-between">
                 <p className='font-semibold text-sm'>{name}</p>
                 {/* <p className='text-zinc-500 text-sm'>{description}</p> */}
-                <div className='flex'><span className='text-red-300 line-through flex items-center '><PiCurrencyInr />{price-5}</span><span className='text-red-500 flex items-center'><span><PiCurrencyInr /></span>{price}</span></div>
+                <div className='flex'><span className='text-red-300 line-through flex items-center '><PiCurrencyInr />{price}</span><span className='text-red-500 flex items-center'><span><PiCurrencyInr /></span>{price-5}</span></div>
                 <div className='bg-red-500'>
                   {!cartItem[id] ? (
                     <div
